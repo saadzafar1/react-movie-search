@@ -14,6 +14,7 @@ const App = () => {
 
   useEffect(() => {
     axios.get(`${MOVIE_API_URL}&s=man`).then(({ data }) => {
+      console.log(data);
       setMovies([...data.Search]);
       setLoading(false);
     });

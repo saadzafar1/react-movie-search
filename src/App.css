@@ -69,6 +69,10 @@
   width: 300px;
   height: auto;
 }
+.movie a {
+  text-decoration: none;
+  color: #222;
+}
 .errorMessage {
   margin: auto;
   font-weight: bold;
