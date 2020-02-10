@@ -66,8 +66,8 @@
   margin-bottom: 0;
 }
 .movie img {
-  width: auto;
-  height: 300px;
+  width: 300px;
+  height: auto;
 }
 .errorMessage {
   margin: auto;

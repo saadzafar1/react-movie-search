@@ -6,7 +6,7 @@ import Search from './components/Search';
 import Loader from './components/Loader';
 import './App.css';
 
-const MOVIE_API_URL = 'http://www.omdbapi.com/?apikey=c88eaf2b';
+const MOVIE_API_URL = 'https://www.omdbapi.com/?apikey=c88eaf2b';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
