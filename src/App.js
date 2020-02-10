@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Header from './components/Header';
 import Movie from './components/Movie';
 import Search from './components/Search';
@@ -12,30 +13,23 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    fetch(`${MOVIE_API_URL}&s=man`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setMovies([...data.Search]);
-        setLoading(false);
-      });
+    axios.get(`${MOVIE_API_URL}&s=man`).then(({ data }) => {
+      setMovies([...data.Search]);
+      setLoading(false);
+    });
   }, []);
 
   const search = searchValue => {
     setLoading(true);
     setErrorMessage(null);
-
-    fetch(`${MOVIE_API_URL}&s=${searchValue}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setLoading(false);
-        if (data.Response === 'True') {
-          setMovies([...data.Search]);
-        } else {
-          setErrorMessage(data.Error);
-        }
-      });
+    axios.get(`${MOVIE_API_URL}&s=${searchValue}`).then(({ data }) => {
+      setLoading(false);
+      if (data.Response === 'True') {
+        setMovies([...data.Search]);
+      } else {
+        setErrorMessage(data.Error);
+      }
+    });
   };
   const content =
     loading && !errorMessage ? (
